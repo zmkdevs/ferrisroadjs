@@ -78,7 +78,7 @@ class Obstacle {
   constructor(x, y, speed, img) {
     this.x = x;
     this.y = y;
-    this.speed = speed / 2.5; // Замедление скорости в 2.5 раза
+    this.speed = speed / 1.5; // Замедление скорости в 2.5 раза
     this.img = speed >= 0 ? flipImage(img) : img;
   }
 
@@ -106,7 +106,7 @@ class Lane {
                    randomChoice(images.rivers);
     this.obstacles = [];
     if (laneType === 'road') {
-      const laneSpeed = randomChoice([-3, 3]) / 2.5; // Замедление: ±3 → ±1.2
+      const laneSpeed = randomChoice([-3, 3]) / 1.5; // Замедление: ±3 → ±1.2
       const numCars = randomInt(1, 2);
       const minDistance = images.cars[0].width * 2;
       const maxX = WIN_WIDTH - images.cars[0].width;
@@ -117,7 +117,7 @@ class Lane {
         this.obstacles.push(new Obstacle(obsX, y, laneSpeed, carImg));
       }
     } else if (laneType === 'river') {
-      const speed = randomChoice([-2, 2]) / 2.5; // Замедление: ±2 → ±0.8
+      const speed = randomChoice([-2, 2]) / 1.5; // Замедление: ±2 → ±0.8
       for (let i = 0; i < randomInt(2, 4); i++) {
         this.obstacles.push(new Obstacle(randomInt(0, WIN_WIDTH), y, speed, images.log));
       }
